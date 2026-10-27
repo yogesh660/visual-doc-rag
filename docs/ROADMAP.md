@@ -94,27 +94,22 @@ validator. **Exit:** reports downloaded and rendered reproducibly.
 ### M1 - Two baselines
 Text RAG (Docling + hybrid search) and visual RAG (ColQwen + Qdrant) on the same corpus, both
 evaluated on retrieval metrics, MLflow logging.
-**Shows:** a fair, measured comparison
 
 ### M2 - Answers with citations
 Qwen3-VL answers from top-k pages, citation and faithfulness checks, answer accuracy on the
 own set and ViDoRe V3.
-**Shows:** end-to-end multimodal RAG
 
 ### M3 - Efficiency
 Shrink the multi-vector index (token pooling, binary or scalar quantisation), measure size vs
 nDCG, add a reranking stage, report the best trade-off.
-**Shows:** retrieval engineering beyond "it works"
 
 ### M4 - Domain fine-tune
 LoRA fine-tune of the retriever on German financial pages (synthetic queries from page images,
 hard negatives from the same report), before/after on the German slice.
-**Shows:** fine-tuning where it is justified by a measured gap
 
 ### M5 - Demo and deployment
 Gradio app with a pre-built index, Docker images, Helm chart (API + Qdrant + vLLM), Modal
 endpoint for the VLM.
-**Shows:** production packaging
 
 ## Demo and hosting
 
@@ -158,9 +153,3 @@ CLAUDE.md  Makefile  docs/adr/
 - Annual report licences: link to and download from the source instead of redistributing PDFs.
 - VLM hallucinating numbers from charts. Mitigation: faithfulness check against OCR text of the
   cited page.
-
-## Interview talking points
-
-- Where visual retrieval beat OCR-text RAG (charts, complex tables) and where it didn't.
-- How late interaction works and why it costs more storage than single-vector embeddings.
-- The size vs accuracy curve from M3, and which point you would ship.
